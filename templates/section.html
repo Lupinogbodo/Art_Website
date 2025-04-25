@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}{{ section_title }}{% endblock %}
+{% block content %}
+<section class="section-detail">
+  <h1>{{ section_title }}</h1>
+  <div class="art-list">
+    {% for art in artworks %}
+      <div class="art-item {% if loop.index is even %}reverse{% endif %}">
+        <img src="{{ art.src }}" alt="{{ art.title }}">
+        <div class="art-desc">
+          <h2>{{ art.title }}</h2>
+          <p>{{ art.desc }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

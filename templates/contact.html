@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Contact{% endblock %}
+{% block content %}
+<section class="contact-page">
+  <h1>Contact Me</h1>
+  <form action="/contact" method="post">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" placeholder="Your Email" required>
+    <select name="purpose" required>
+      <option value="">Purpose</option>
+      <option value="inspiration">Art Inspiration</option>
+      <option value="question">Questions</option>
+    </select>
+    <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+</section>
+{% endblock %}
