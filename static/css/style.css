@@ -151,3 +151,146 @@ canvas#bg {
     position: relative;
     z-index: 1;
   }
+
+  /* Gallery overview (gallery.html) */
+.gallery-sections h1 {
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+}
+.sections {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+.section-card {
+  width: 180px;
+  height: 120px;
+  background: #111;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: transform 0.3s, background 0.3s;
+}
+.section-card:hover {
+  transform: scale(1.05);
+  background: #333;
+}
+
+/* Section detail (section.html) */
+.section-detail {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+.back-link {
+  display: inline-block;
+  margin: 1rem 0 2rem;
+  color: #111;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.back-link:hover {
+  color: #555;
+}
+
+.gallery-grid .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  padding: 0 2rem 4rem;
+}
+
+.art-card {
+  background: #fafafa;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.art-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.art-card img.art-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.art-info {
+  padding: 1rem;
+  text-align: left;
+}
+.art-info h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+.art-info p {
+  font-size: 0.9rem;
+  color: #444;
+  line-height: 1.4;
+}
+
+/* — Pure Lightbox Styles — */
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;                    /* top/right/bottom/left:0 */
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.lightbox-overlay.active {
+  display: flex;
+}
+
+.lightbox-overlay img {
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  border-radius: 4px;
+  transition: transform 0.3s ease;
+}
+
+/* optional “pop” animation */
+.lightbox-overlay.active img {
+  transform: scale(1.05);
+  animation: pop-in 0.2s ease-out forwards;
+}
+
+@keyframes pop-in {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1.05); opacity: 1; }
+}
+
+/* clicking outside the image closes */
+.lightbox-overlay .close-area {
+  position: absolute;
+  inset: 0;
+  cursor: zoom-out;
+}
+
+.flashes {
+  list-style: none;
+  padding: 0;
+}
+.flashes .success {
+  color: green;
+}
+.flashes .error {
+  color: red;
+}
+

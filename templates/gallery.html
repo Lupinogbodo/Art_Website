@@ -1,14 +1,16 @@
 {% extends "base.html" %}
+
 {% block title %}Gallery{% endblock %}
+
 {% block content %}
-<section class="gallery-sections">
-  <h1>Gallery</h1>
-  <div class="sections">
-    {% for key, name in sections.items() %}
-      <a href="/gallery/{{ key }}" class="section-card">
-        <div class="section-name">{{ name }}</div>
-      </a>
-    {% endfor %}
-  </div>
-</section>
+  <section class="gallery-sections">
+    <h1>Gallery</h1>
+    <div class="sections">
+      {% for key, name in sections.items() %}
+        <a href="{{ url_for('section', section_key=key) }}" class="section-card">
+          <div class="section-name">{{ name }}</div>
+        </a>
+      {% endfor %}
+    </div>
+  </section>
 {% endblock %}

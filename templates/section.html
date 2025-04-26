@@ -1,18 +1,48 @@
 {% extends "base.html" %}
+
 {% block title %}{{ section_title }}{% endblock %}
+
 {% block content %}
-<section class="section-detail">
-  <h1>{{ section_title }}</h1>
-  <div class="art-list">
-    {% for art in artworks %}
-      <div class="art-item {% if loop.index is even %}reverse{% endif %}">
-        <img src="{{ art.src }}" alt="{{ art.title }}">
-        <div class="art-desc">
-          <h2>{{ art.title }}</h2>
-          <p>{{ art.desc }}</p>
-        </div>
+  <section class="gallery-sections">
+    <h1>{{ section_title }}</h1>
+    <a href="{{ url_for('gallery') }}" class="back-link">&larr; Back to all sections</a>
+  </section>
+
+  {% if artworks %}
+    <section class="gallery-grid">
+      <div class="grid">
+        {% for art in artworks %}
+          <div class="art-card">
+            <img
+              src="{{ url_for('static', filename=art.src) }}"
+              alt="{{ art.title }}"
+              class="art-img"
+            >
+            <div class="art-info">
+              <h3>{{ art.title }}</h3>
+              <p>{{ art.desc }}</p>
+            </div>
+          </div>
+        {% endfor %}
       </div>
-    {% endfor %}
+    </section>
+  {% else %}
+    <p>No artwork found for this section.</p>
+  {% endif %}
+
+<!-- Lightbox Overlay -->
+<div class="lightbox-overlay" id="lightbox">
+  <div class="close-area" id="lightbox-close"></div>
+  <div class="lightbox-content">
+    <img id="lightbox-img" src="" alt="">
+    <p id="lightbox-desc" style="display: none;"></p>
   </div>
-</section>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <!-- Lightbox/enlarge script -->
+  <script src="{{ url_for('static', filename='js/enlarge.js') }}"></script>
 {% endblock %}
