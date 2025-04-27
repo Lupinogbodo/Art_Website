@@ -16,13 +16,20 @@
       <li><a href="/gallery">Gallery</a></li>
       <li><a href="/about">About</a></li>
       <li><a href="/contact">Contact</a></li>
+      {% if session.user_email %}
+        <li><a href="/store">Store</a></li>
+        <li><a href="/logout">Logout</a></li>
+      {% else %}
+        <li><a href="/login">Login</a></li>
+        <li><a href="/signup">Sign Up</a></li>
+      {% endif %}
     </ul>
   </nav>
   <main>
     {% block content %}{% endblock %}
   </main>
   <footer>
-    <p>&copy; 2025 Your Name</p>
+    <p>&copy; 2025 LUPIN</p>
   </footer>
 
   {# this block will let child templates inject scripts #}

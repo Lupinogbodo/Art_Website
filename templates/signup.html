@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Sign Up{% endblock %}
+{% block content %}
+<section class="auth-page">
+  <h1>Sign Up</h1>
+  <form method="post">
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <button type="submit">Create Account</button>
+  </form>
+  <p>Already have one? <a href="{{ url_for('login') }}">Log In</a></p>
+</section>
+{% endblock %}

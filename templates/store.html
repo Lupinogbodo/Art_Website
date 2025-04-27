@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Store{% endblock %}
+{% block content %}
+<section class="store-page">
+  <h1>Digital Art Store</h1>
+  <div class="store-grid">
+    {% for art in artworks %}
+    <div class="store-card">
+      <img src="{{ url_for('static', filename=art.src) }}" alt="{{ art.title }}">
+      <h3>{{ art.title }}</h3>
+      <p>{{ art.desc }}</p>
+      <a href="{{ url_for('buy', art_title=art.title) }}" class="buy-button">Buy ₦20</a>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

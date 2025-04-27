@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Buy {{ art.title }}{% endblock %}
+
+{% block content %}
+<section class="buy-section">
+  <h1>Buy “{{ art.title }}”</h1>
+  <img src="{{ url_for('static', filename=art.src) }}" alt="{{ art.title }}" class="buy-img">
+  <p>{{ art.desc }}</p>
+  <p>Price: ₦{{ '%.2f'|format(20) }}</p>  <!-- or art.price if dynamic -->
+
+  <form action="{{ url_for('initialize_payment') }}" method="post">
+    <input type="hidden" name="title" value="{{ art.title }}">
+    <input type="hidden" name="price" value="20">
+    <label>
+      Your Email:
+      <input type="email" name="email" required>
+    </label>
+    <button type="submit" class="buy-complete-button">
+      Pay with Paystack
+    </button>
+  </form>
+
+  <a href="{{ url_for('gallery') }}" class="back-link">&larr; Back to Gallery</a>
+</section>
+{% endblock %}
